@@ -1,0 +1,35 @@
+<h2>Employee List</h2>
+<!--serechbox-->
+<div class="search">
+<input type="search" [(ngModel)]="searchtext" id="sr" class="form-control" placeholder="search" aria-label="search"/>
+</div>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">work</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees | filter:searchtext">
+            <td>{{ employee.emp_Id }}</td>
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.emailId }}</td>
+            <td>{{ employee.work }}</td>
+            <td>
+                <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update </button>
+                <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
